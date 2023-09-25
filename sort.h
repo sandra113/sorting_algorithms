@@ -5,5 +5,6 @@
 
 void bubble_sort(int *array, size_t size);
 void print_array(int *array, int n);
+void selection_sort(int *array, size_t size);
 
 #endif
