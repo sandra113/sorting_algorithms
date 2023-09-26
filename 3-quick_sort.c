@@ -9,6 +9,8 @@
  */
 void quick_sort(int *array, size_t size)
 {
+	if (size <= 1)
+		return;
 	quick_sort_main(array, 0, size - 1, size);
 }
 
@@ -18,6 +20,7 @@ void quick_sort(int *array, size_t size)
  * @array: the array the sort
  * @low: the start of the partion
  * @high: the end of the partion
+ * @size: the size of the array
  *
  * Return: nothing
  */
@@ -28,13 +31,10 @@ void quick_sort_main(int *array, size_t low, size_t high, size_t size)
 	if (low < high)
 	{
 		idx = lomuto(array, low, high);
-		if (idx > low)
-		{
+		if (idx > 0)
 			quick_sort_main(array, low, idx - 1, size);
-			print_array(array, size);
-		}
-		quick_sort_main(array, idx + 1, high, size);
 		print_array(array, size);
+		quick_sort_main(array, idx + 1, high, size);
 	}
 }
 /**
@@ -52,7 +52,7 @@ int lomuto(int *array, size_t low, size_t high)
 
 	for (j = low; j <= high - 1; j++)
 	{
-		if (array[j] <= pivot)
+		if (array[j] < pivot)
 		{
 			i++;
 			temp = array[i];
