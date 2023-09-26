@@ -7,31 +7,22 @@
  */
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, idx, sorted;
-	int var;
+	size_t i, j, idx, temp;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size - 1; i++)
 	{
-		var = array[i];
-
+		idx = i;
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] < var)
-			{
-				var = array[j];
+			if (array[j] < array[idx])
 				idx = j;
-				sorted = 1;
-			}
-			if (array[i - 1] == array[j - 2])
-				continue;
-			if (j == size - 1)
-			{
-				array[idx] = array[i];
-				array[i] = var;
-				print_array(array, size);
-			}
 		}
-		if (sorted == 0)
-			break;
+		if (idx != i)
+		{
+			temp = array[idx];
+			array[idx] = array[i];
+			array[i] = temp;
+			print_array(array, size);
+		}
 	}
 }
