@@ -52,7 +52,7 @@ int lomuto(int *array, size_t low, size_t high)
 
 	for (j = low; j <= high - 1; j++)
 	{
-		if (array[j] < pivot)
+		if (array[j] <= pivot)
 		{
 			i++;
 			temp = array[i];
